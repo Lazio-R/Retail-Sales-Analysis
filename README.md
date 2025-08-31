@@ -1,6 +1,6 @@
-## Retail-Sales-Analysis
+# Retail-Sales-Analysis
 
-# Project Overview
+## Project Overview
 
 This Retail Sales Analysis project explores transactional data from a retail business to:
 - Analyze sales trends over time
@@ -8,20 +8,20 @@ This Retail Sales Analysis project explores transactional data from a retail bus
 - Evaluate revenue performance per week, month and revenue bucket
 - Understand customer age category
 
-# Data Sources
+## Data Sources
 
 - Retail_sales - original dataset
 - Retail_sales_processed - final output
 - Retail_sales code - databricks sql code
 
-# Dashboard Highlights
+## Dashboard Highlights
 
 - Totals Overview: revenue, vustomers, 
 - Revenue Trends: Time-series analysis
 - Product Insights: Top sellers and categories
 - Filters: Date range and age category
 
-# Tools & Technologies Used
+## Tools & Technologies Used
 
 - Miro - for planning
 - Excel - preview and inspect the data
