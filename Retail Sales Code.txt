@@ -1,0 +1,43 @@
+----DB, Schema and Table preview----
+
+SELECT * FROM workspace.datasets.retail_sales;
+
+----Data Processing----
+
+--------------Create a Aggregatted Columns-------------
+SELECT 
+    COUNT(DISTINCT`transaction id`) AS `Total Transactions`,
+    COUNT(DISTINCT`customer id`) AS `Total Customers`,
+    COUNT(DISTINCT`product category`) AS `Product Count`,
+
+    SUM(`Total Amount`) AS `Total Revenue`,
+    SUM(`Quantity`) AS `Total Quantity`,
+    SUM(`Price per unit`) AS `Unit Price`,
+
+--------------Extract Days, Months and Year from the date-------------
+
+    dayname(`Date`) AS `Day of Week`,
+    dayofmonth(`Date`) AS `Day of Month`,
+    month(`Date`) AS `Month`,
+    year(`Date`) AS `Year`,
+
+--------------Create a Age Category-------------
+
+    CASE 
+        WHEN `Age` BETWEEN 0 AND 12 THEN '0-12: Kids'
+        WHEN `Age` BETWEEN 13 AND 17 THEN '13-17: Teenagers '
+        WHEN `Age` BETWEEN 18 AND 24 THEN '18-24: Young Adults'
+        WHEN `Age` BETWEEN 25 AND 34 THEN '25-34: Adults'
+        WHEN `Age` BETWEEN 45 AND 59 THEN '45-59: Middle-aged-Adults'
+        ELSE '60+: Seniors'
+      END AS Age_Category,
+
+--------------Create a Revenue Bucket-------------
+    CASE
+        WHEN `Total Amount` BETWEEN 0 AND 100 THEN '0-100: Low'
+        WHEN `Total Amount` BETWEEN 101 AND 500 THEN '101-500: Medium'
+        ELSE '501+: High'
+      END AS Revenue_Bucket
+
+FROM workspace.datasets.retail_sales
+GROUP BY ALL;
